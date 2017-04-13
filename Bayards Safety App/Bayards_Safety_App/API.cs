@@ -13,6 +13,8 @@ namespace Bayards_Safety_App
 
         const string UriSectionsListTemplate = "<valid_adress>";
         const string UriSectionContent = "<valid_adress>?id={0}";
+        const string UriRiskContent = "<valid_adress>?id={0}";
+
         /// <summary>
         /// Method that gets the complete list of sections; language is specified with language variable
         /// </summary>
@@ -36,12 +38,15 @@ namespace Bayards_Safety_App
         /// <returns></returns> 
         public async Task<List<SafetyObject>> getSectionContent(Section section)
         {
-            string requestUri = String.Format(UriSectionContent,section.ID);
+            List<SafetyObject> result;
+            string requestUri = String.Format(UriSectionContent, section.Id);
             using (HttpClient hc = new HttpClient())
             {
-                //GET REQUEST
+                var responseMsg = await hc.GetAsync(requestUri);
+                var resultStr = await responseMsg.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<SafetyObject>>(resultStr);
             }
-            return null;
+            return result;
         }
         /// <summary>
         /// Method that sends password to the server
@@ -51,11 +56,11 @@ namespace Bayards_Safety_App
         public bool isPasswordCorrect(string password)
         {
             if (password == "central") return true; //УДАЛИТЬ ПОСКОРЕЕЕЕЕ
-               using (HttpClient hc = new HttpClient())
-                {
-                    //POST REQUEST
-                }
-            return false;
+            using (HttpClient hc = new HttpClient())
+            {
+                //POST REQUEST
+            }
+                return false;
 
         }
         /// <summary>
@@ -63,7 +68,7 @@ namespace Bayards_Safety_App
         /// </summary>
         /// <param name="risk"></param>
         /// <returns>List of all links with risk data</returns>
-        public async<List<string>> getRiskInfo(Risk risk)
+        public async Task<List<string>> getRiskInfo(Risk risk)
         {
             //здесь мы получаем список ссылок на ресурсы по этому риску
             using (HttpClient hc = new HttpClient())
