@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Bayards_Safety_App.Entities
 {
-    public class Risk : SafetyObject
+    public class SafetyObject
     {
-      
-
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
