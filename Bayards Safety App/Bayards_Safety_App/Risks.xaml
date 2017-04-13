@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bayards_Safety_App.Risks">
+             x:Class="Bayards_Safety_App.Risks" Appearing="Page_Appeared">
     
     <ContentPage.Content>
 
@@ -23,7 +23,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Button CommandParameter="{Binding}" Text="{Binding}" Clicked="RiskButton_Clicked"/>
+                                <Button CommandParameter="{Binding}" Text="{Binding}" Clicked="RiskButton_Clicked" BackgroundColor="Transparent" TextColor="Black" Style="width: inherit;"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

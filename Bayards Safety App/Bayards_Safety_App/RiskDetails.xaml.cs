@@ -12,10 +12,13 @@ namespace Bayards_Safety_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RiskDetails : ContentPage
 	{
-		public RiskDetails (string riskId, string riskName)
+        public string RiskId { get; set; }
+        public RiskDetails (string riskId, string riskName)
 		{
 			InitializeComponent ();
             Header.Text = riskName;
+            RiskId = riskId;
+            
 		}
         private void NextButton_Clicked(object sender, EventArgs e)
         {
