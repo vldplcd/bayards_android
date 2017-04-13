@@ -6,7 +6,7 @@ namespace Bayards_Safety_App.Entities
 {
     public class Risk : SafetyObject
     {
-      
-
+        public string Text { get; set; }
+        public List<string> Media { get; set; }
     }
 }

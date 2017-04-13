@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DTO\ShellRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Risk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\SafetyObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Section.cs" />
