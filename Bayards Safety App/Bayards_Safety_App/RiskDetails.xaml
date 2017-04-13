@@ -21,9 +21,9 @@
             <ScrollView  Grid.Row ="3" Padding="10">
                 <Label x:Name="textDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae justo et quam bibendum elementum non eget nibh. Nam elementum risus eget libero cursus cursus.</Label>
             </ScrollView>
-            <Button x:Name="prevBtn" HorizontalOptions="Start" Grid.Row="5" Text="Prev" Clicked="PrevButton_Clicked" IsVisible="True" BackgroundColor="Aqua" FontAttributes="Bold" TextColor="White"/>
+            
             <Switch x:Name="swt" HorizontalOptions="Center" Grid.Row="5"  IsVisible="True"/>
-            <Button x:Name="nextBtn" HorizontalOptions="End" Grid.Row="5" Text="Next" Clicked="NextButton_Clicked" IsVisible="True" BackgroundColor="Aqua" FontAttributes="Bold" TextColor="White"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

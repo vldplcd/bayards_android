@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using System.IO;
 
 namespace Bayards_Safety_App
 {
@@ -22,7 +22,18 @@ namespace Bayards_Safety_App
             API api = new API();
             if(api.isPasswordCorrect(PasswordEntry.Text))
             {
-                Navigation.PushAsync(new UserAgreementPage());
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                string filename = Path.Combine(path, "settings.txt");
+                if (File.Exists(filename))
+                {                    
+                    string[] lines = File.ReadAllLines(filename);
+                    if(Encoding.UTF8.GetString(Convert.FromBase64String(lines[0])) == "1")
+                        Navigation.PushAsync(new Sections());
+                    else
+                        Navigation.PushAsync(new UserAgreementPage());
+                }
+                else
+                    Navigation.PushAsync(new UserAgreementPage());
             }
             else
             {
