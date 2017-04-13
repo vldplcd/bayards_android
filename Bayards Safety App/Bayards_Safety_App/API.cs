@@ -12,15 +12,13 @@ namespace Bayards_Safety_App
     {
 
         const string UriSectionsListTemplate = "<valid_adress>";
-        const string Uri
+        const string UriSectionContent = "<valid_adress>?id={0}";
         /// <summary>
         /// Method that gets the complete list of sections; language is specified with language variable
         /// </summary>
         /// <returns>List of sections</returns>
         public async Task<List<Section>> getCompleteSectionsList(string language)
         {
-
-           
             string requestUri = UriSectionsListTemplate;
             List<Section> result;
             using (HttpClient hc = new HttpClient())
@@ -32,12 +30,13 @@ namespace Bayards_Safety_App
             return result;
         }
         /// <summary>
-        /// Method that gets the list of all risks from specified Section
+        /// Method that gets the list of all risks and subsections from specified section
         /// </summary>
         /// <param name="section"></param>
         /// <returns></returns> 
-        public async Task<List<SafetyObject>> getRisksList(Section section)
+        public async Task<List<SafetyObject>> getSectionContent(Section section)
         {
+            string requestUri = String.Format(UriSectionContent,section.ID);
             using (HttpClient hc = new HttpClient())
             {
                 //GET REQUEST

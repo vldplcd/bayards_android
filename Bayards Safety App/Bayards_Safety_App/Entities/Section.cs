@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bayards_Safety_App.Entities
 {
-    public class Section
+    public class Section : SafetyObject
     {
         public bool isASubsection;
     }
