@@ -17,7 +17,7 @@ namespace Bayards_Safety_App
         /// Method that gets the complete list of sections; language is specified with language variable
         /// </summary>
         /// <returns>List of sections</returns>
-        public async Task<List<SafetyObject>> getCompleteSectionsList(string language)
+        public async Task<List<Section>> getCompleteSectionsList(string language)
         {
 
            
