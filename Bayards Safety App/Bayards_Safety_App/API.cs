@@ -3,29 +3,40 @@ using System.Collections.Generic;
 using System.Text;
 using Bayards_Safety_App.Entities;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Bayards_Safety_App
 {
     public class API
     {
+
+        const string UriSectionsListTemplate = "<valid_adress>";
+        const string Uri
         /// <summary>
         /// Method that gets the complete list of sections; language is specified with language variable
         /// </summary>
         /// <returns>List of sections</returns>
-        public List<Section> getCompleteSectionsList(string language)
+        public async Task<List<Section>> getCompleteSectionsList(string language)
         {
+
+           
+            string requestUri = UriSectionsListTemplate;
+            List<Section> result;
             using (HttpClient hc = new HttpClient())
             {
-                //GET REQUEST
+                var responseMsg = await hc.GetAsync(requestUri);
+                var resultStr = await responseMsg.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<Section>>(resultStr);
             }
-            return null;
+            return result;
         }
         /// <summary>
         /// Method that gets the list of all risks from specified Section
         /// </summary>
         /// <param name="section"></param>
-        /// <returns></returns>
-        public List<Risk> getRisksList(Section section)
+        /// <returns></returns> 
+        public async Task<List<SafetyObject>> getRisksList(Section section)
         {
             using (HttpClient hc = new HttpClient())
             {
@@ -53,12 +64,12 @@ namespace Bayards_Safety_App
         /// </summary>
         /// <param name="risk"></param>
         /// <returns>List of all links with risk data</returns>
-        public List<string> getRiskInfo(Risk risk)
+        public async<List<string>> getRiskInfo(Risk risk)
         {
             //здесь мы получаем список ссылок на ресурсы по этому риску
             using (HttpClient hc = new HttpClient())
             {
-                //GET REQUEST
+                //GET REQUEST   
             }
             return null;
         }
