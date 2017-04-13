@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bayards_Safety_App
+namespace Bayards_Safety_App.Entities
 {
-    class Repository
+    public class Risk : SafetyObject
     {
-
+      
 
     }
 }
