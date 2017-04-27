@@ -166,6 +166,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bayards_Safety_App.Android\Bayards_Safety_App.Android.csproj">
+      <Project>{7FBA47B3-4904-40AE-A855-D7475005AF6A}</Project>
+      <Name>Bayards_Safety_App.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\Bayards_Safety_App\Bayards_Safety_App.projitems" Label="Shared" Condition="Exists('..\Bayards_Safety_App\Bayards_Safety_App.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -13,9 +13,12 @@ namespace Bayards_Safety_App
     public class API
     {
 
-        const string UriSectionsListTemplate = "https://bayardssb-php.000webhostapp.com/api/wantinfo";
-        const string UriSectionContent = "<valid_adress>?id={0}";
-        const string UriRiskContent = "<valid_adress>?id={0}";
+        const string UriSectionsListTemplate = "https://bayardssb-php.000webhostapp.com/api/allSections?lang={0}";
+        const string UriSectionContent = "https://bayardssb-php.000webhostapp.com/api/section?sectionid={0}&&lang={1}";
+        const string UriRiskContent = "https://bayardssb-php.000webhostapp.com/api/?riskid={0}&&lang={1}";
+
+        //TODO: 
+        //Добавить поисковые запросы в функционал API
 
         /// <summary>
         /// Method that gets the complete list of sections; language is specified with language variable
@@ -23,7 +26,7 @@ namespace Bayards_Safety_App
         /// <returns>List of sections</returns>
         public async Task<List<Section>> getCompleteSectionsList(string language)
         {
-            string requestUri = UriSectionsListTemplate;
+            string requestUri = String.Format(UriSectionsListTemplate, language);
             List<Section> result;
             using (HttpClient hc = new HttpClient())
             {
@@ -34,14 +37,14 @@ namespace Bayards_Safety_App
             return result;
         }
         /// <summary>
-        /// Method that gets the list of all risks and subsections from specified section by id
+        /// Method that gets the list of all risks and subsections from specified section by id and language
         /// </summary>
         /// <param name="section"></param>
         /// <returns></returns> 
-        public async Task<List<SafetyObject>> getSectionContent(string Id)
+        public async Task<List<SafetyObject>> getSectionContent(string Id, string language)
         {
             List<SafetyObject> result;
-            string requestUri = String.Format(UriSectionContent, Id);
+            string requestUri = String.Format(UriSectionContent, Id, language);
             using (HttpClient hc = new HttpClient())
             {
                 var responseMsg = await hc.GetAsync(requestUri);
@@ -66,14 +69,14 @@ namespace Bayards_Safety_App
 
         }
         /// <summary>
-        /// Method that gets all data to the specified risk by id
+        /// Method that gets all data to the specified risk by id and lang
         /// </summary>
         /// <param name="risk"></param>
         /// <returns>List of all links with risk data</returns>
-        public async Task<Risk> getRiskContent(string Id)
+        public async Task<Risk> getRiskContent(string Id, string language)
         {
             Risk result;
-            string requestUri = string.Format(UriRiskContent, Id);
+            string requestUri = string.Format(UriRiskContent, Id, language);
             using (HttpClient hc = new HttpClient())
             {
                 var responseMsg = await hc.GetAsync(requestUri);
